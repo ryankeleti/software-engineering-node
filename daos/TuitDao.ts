@@ -12,7 +12,7 @@ export default class TuitDao implements TuitDaoI {
   }
 
   async findTuitById(tid: string): Promise<Tuit> {
-    return await TuitModel.findById(tid);
+    return await TuitModel.findById(tid).populate('postedBy').exec();
   }
 
   async createTuit(tuit: Tuit): Promise<Tuit> {
