@@ -1,20 +1,18 @@
-import {Request, Response, Express} from 'express';
+import { Request, Response, Express } from 'express';
 import TuitDao from '../daos/TuitDao';
 import TuitControllerI from '../interfaces/TuitControllerI';
 
 export default class TuitController implements TuitControllerI {
-  app: Express;
   TuitDao: TuitDao;
 
   constructor(app: Express, TuitDao: TuitDao) {
-    this.app = app;
     this.TuitDao = TuitDao;
-    this.app.get('/tuits', this.findAllTuits);
-    this.app.get('/tuits/:tid', this.findTuitById);
-    this.app.get('/tuits/:uid/tuits', this.findTuitsByUser);
-    this.app.post('/tuits', this.createTuit);
-    this.app.delete('/tuits/:tid', this.deleteTuit);
-    this.app.put('/tuits/:tid', this.updateTuit);
+    app.get('/tuits', this.findAllTuits);
+    app.get('/tuits/:tid', this.findTuitById);
+    app.get('/tuits/:uid/tuits', this.findTuitsByUser);
+    app.post('/tuits', this.createTuit);
+    app.delete('/tuits/:tid', this.deleteTuit);
+    app.put('/tuits/:tid', this.updateTuit);
   }
 
   findAllTuits = (req: Request, res: Response) =>

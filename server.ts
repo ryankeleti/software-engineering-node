@@ -1,4 +1,4 @@
-import express, {Request, Response} from 'express';
+import express, { Request, Response } from 'express';
 import mongoose from 'mongoose';
 
 import UserController from './controllers/UserController';
@@ -12,7 +12,6 @@ mongoose.connect(connectionString);
 
 const app = express();
 app.use(express.json());
-
 app.get('/', (req: Request, res: Response) =>
     res.send('Welcome...'));
 

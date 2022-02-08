@@ -1,19 +1,17 @@
-import {Request, Response, Express} from 'express';
+import { Request, Response, Express } from 'express';
 import UserDao from '../daos/UserDao';
 import UserControllerI from '../interfaces/UserControllerI';
 
 export default class UserController implements UserControllerI {
-  app: Express;
   userDao: UserDao;
 
   constructor(app: Express, userDao: UserDao) {
-    this.app = app;
     this.userDao = userDao;
-    this.app.get('/users', this.findAllUsers);
-    this.app.get('/users/:uid', this.findUserById);
-    this.app.post('/users', this.createUser);
-    this.app.delete('/users/:uid', this.deleteUser);
-    this.app.put('/users/:uid', this.updateUser);
+    app.get('/users', this.findAllUsers);
+    app.get('/users/:uid', this.findUserById);
+    app.post('/users', this.createUser);
+    app.delete('/users/:uid', this.deleteUser);
+    app.put('/users/:uid', this.updateUser);
   }
 
   findAllUsers = (req: Request, res: Response) =>
