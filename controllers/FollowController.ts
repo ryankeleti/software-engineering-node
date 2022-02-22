@@ -25,10 +25,10 @@ import FollowControllerI from "../interfaces/FollowControllerI";
 export default class FollowController implements FollowControllerI {
     private static followDao: FollowDao = FollowDao.getInstance();
     private static followController: FollowController | null = null;
+
     /**
      * Creates singleton controller instance
-     * @param {Express} app Express instance to declare the RESTful Web service
-     * API
+     * @param {Express} app Express instance to declare the RESTful Web service API
      * @return FollowController
      */
     public static getInstance = (app: Express): FollowController => {
