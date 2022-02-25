@@ -1,5 +1,9 @@
+/**
+ * @file Implements mongoose schema for users
+ */
 import mongoose from "mongoose";
 import User from "../../models/users/User";
+
 const UserSchema = new mongoose.Schema<User>({
     username: {type: String, required: true, default: `testusername${Date.now()}`},
     password: {type: String, required: true, default: `testpassword${Date.now()}`},

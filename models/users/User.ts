@@ -21,7 +21,6 @@ import mongoose from "mongoose";
  * @property {AccountType} accountType
  * @property {MaritalStatus} maritalStatus
  */
-
 export default interface User {
     _id?: mongoose.Schema.Types.ObjectId,
     username: string,
