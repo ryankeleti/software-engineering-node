@@ -11,7 +11,7 @@ import TuitDaoI from "../interfaces/TuitDaoI";
  * of Users
  * @property {UserDao} userDao Private single instance of UserDao
  */
-export default class TuitDao implements TuitDaoI{
+export default class TuitDao implements TuitDaoI {
     private static tuitDao: TuitDao | null = null;
     public static getInstance = (): TuitDao => {
         if(TuitDao.tuitDao === null) {
@@ -39,7 +39,7 @@ export default class TuitDao implements TuitDaoI{
         TuitModel.updateOne(
             {_id: tid},
             {$set: tuit});
-    updateLikes = async (tid: string, newStats: any): Promise<any> =>
+    updateStats = async (tid: string, newStats: any): Promise<any> =>
         TuitModel.updateOne(
             {_id: tid},
             {$set: {stats: newStats}}
