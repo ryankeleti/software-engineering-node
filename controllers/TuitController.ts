@@ -76,10 +76,10 @@ export default class TuitController implements TuitControllerI {
      */
     findAllTuitsByUser = (req: Request, res: Response) => {
         // @ts-ignore
-        let userId = req.params.uid === "my" && req.session['profile'] ?
+        let userId = req.params.uid === "me" && req.session['profile'] ?
             // @ts-ignore
             req.session['profile']._id : req.params.uid;
-        if (userId === "my") {
+        if (userId === "me") {
             res.sendStatus(503);
             return;
         }
@@ -97,10 +97,10 @@ export default class TuitController implements TuitControllerI {
      */
     createTuitByUser = (req: Request, res: Response) => {
         // @ts-ignore
-        let userId = req.params.uid === "my" && req.session['profile'] ?
+        let userId = req.params.uid === "me" && req.session['profile'] ?
             // @ts-ignore
             req.session['profile']._id : req.params.uid;
-        if (userId === "my") {
+        if (userId === "me") {
             res.sendStatus(503);
             return;
         }
