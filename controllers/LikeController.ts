@@ -14,10 +14,8 @@ import TuitDao from "../daos/TuitDao";
  *     </li>
  *     <li>GET /api/tuits/:tid/likes to retrieve all users that liked a tuit
  *     </li>
- *     <li>POST /api/users/:uid/likes/:tid to record that a user likes a tuit
+ *     <li>PUT /api/users/:uid/likes/:tid to record that a user toggles liking a tuit
  *     </li>
- *     <li>DELETE /api/users/:uid/unlikes/:tid to record that a user
- *     no londer likes a tuit</li>
  * </ul>
  * @property {LikeDao} likeDao Singleton DAO implementing likes CRUD operations
  * @property {LikeController} LikeController Singleton controller implementing
@@ -107,7 +105,7 @@ export default class LikeController implements LikeControllerI {
                 await LikeController.likeDao.userLikesTuit(userId, tid);
                 tuit.stats.likes = howManyLikedTuit + 1;
             };
-            await tuitDao.updateLikes(tid, tuit.stats);
+            await tuitDao.updateStats(tid, tuit.stats);
             res.sendStatus(200);
         } catch (e) {
             res.sendStatus(404);
